@@ -49,7 +49,7 @@ levels(accelerometry$activity)=tolower(c("WALKING","WALKING_UPSTAIRS","WALKING_D
 variableL=!names(accelerometry) %in% c("activity","subject")
 acc.split=split(x=accelerometry[,variableL],f=list(accelerometry$activity,accelerometry$subject),drop=FALSE)
 
-#Create the tidy data set
+#Create the tidy data set. It is currently empty.
 average.measurements=data.frame(measurement=character(),activity=character(),subject=character(),average=character())
 
 #Caculate the mean of each variable split by subject and by activity and appends it 
