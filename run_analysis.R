@@ -6,8 +6,8 @@
 feature <- read.table(file="UCI HAR Dataset/features.txt",header=FALSE,stringsAsFactors=FALSE)
 feature <- feature$V2
 
-#Function that loads the measurements datasets into R
-#where the name will be "train" or "test".
+#Function that loads the subject, measurements and activity datasets into R
+#for the  named splits ("train" or "test").
 construct <- function(name){
         #Load the subjects
         subject <- read.table(file=paste("UCI HAR Dataset/",name,"/subject_",name,".txt",sep="")
@@ -20,17 +20,16 @@ construct <- function(name){
                         ,header=FALSE)
         #Build the dataframe to return
         dataset <- data.frame(subject,X,y)
-        #Name the dataframe columns
+        #Name the dataframe variables
         names(dataset)=c("subject",feature,"activity")
         #Return the desired dataframe
         return(dataset)
 }
 
-#Build the data frame of measurements 
-#from the training set and the test set
+#Build the combined data frame from the loaded training split and the test split
 accelerometry=rbind(construct("train"),construct("test"))
 
-#Extract the columns of interest: "subject","activity" 
+#Extract the variables of interest: "subject","activity" 
 #and the mean or standard deviations of other values.
 #A regular expression is given to grepl to select the columns.
 regexp="(subject)|(activity)|([Mm]ean)|(std)"
@@ -71,5 +70,5 @@ for (i in seq_along(acc.split)){
 #Remove the names of the rows i.e. sets them to 1,2,3,...
 row.names(average.measurements)=NULL
 
-#Print the resulting data.frame into the long awaited tidy set in csv format
+#Write the resulting data.frame into the long awaited tidy set in csv format
 write.csv(x=average.measurements,file="tidydataset.txt",row.names=FALSE)
