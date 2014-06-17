@@ -5,8 +5,9 @@
 
 This is a description of the cleaning process of a data set as required by the
 june 2014 session of the Coursera class "Getting and cleaning data".
-The data represent data collected from the accelerometers from the Samsung Galaxy S smartphone. A full description is available at the site where the data was obtained: 
 
+The raw data represent data collected from the accelerometers from the Samsung Galaxy S 
+smartphone. A full description is available at the site where the data was obtained: 
 http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones 
 
 Here are the data for the project: 
@@ -15,6 +16,11 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
 
 The cleaning script is run_analysis.R and assumes the unzipped downloaded files are in the same directory. The resulting tidy data set tidydataset.csv is described in Codebook.md .
 
+ "tidy/clean data" is to be understood  as  per Hadley Wickham's Tidy data paper http://vita.had.co.nz/papers/tidy-data.pdf i.e.
+ 
+1. Each variable forms a column.
+2. Each observation forms a row.
+3. Each type of observational unit forms a table.
 
 
 ### 1. Merge the training and the test sets to create one data set.
